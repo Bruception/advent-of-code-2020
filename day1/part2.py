@@ -1,4 +1,5 @@
-file = open('input.txt', 'r')
+import sys
+file = open(f'{sys.path[0]}/input.txt', 'r')
 nums = sorted([int(line) for line in file])
 for i in range(0, len(nums)):
 	target = 2020 - nums[i]

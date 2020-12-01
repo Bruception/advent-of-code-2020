@@ -1,4 +1,5 @@
-file = open('input.txt', 'r')
+import sys
+file = open(f'{sys.path[0]}/input.txt', 'r')
 map = {}
 for line in file:
 	num = int(line)
