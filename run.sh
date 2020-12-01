@@ -12,8 +12,8 @@ do
     part=1
     for script in `ls $day | egrep '^part[0-9]+\.py'`
     do
-        output=`python3 $day$script`
-        printf "\\tSolution for part $part: $output\n"
+        answer=`python3 $day$script`
+        printf "\\tAnswer for part $part: $answer\n"
         part=$(( part + 1 ))
     done
     dayNumber=$(( dayNumber + 1 ))
