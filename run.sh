@@ -12,7 +12,7 @@ do
     part=1
     for script in `ls $day | egrep '^part[0-9]+\.py'`
     do
-        answer=`python3 $day$script`
+        answer=`python3 $day$script 2>/dev/null || printf "Oops! No answer yet :("`
         printf "\\tAnswer for part $part: $answer\n"
         part=$(( part + 1 ))
     done
