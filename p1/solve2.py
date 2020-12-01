@@ -7,7 +7,6 @@ for i in range(0, len(nums)):
 	while (left < right):
 		total = nums[left] + nums[right]
 		if (total == target):
-			print(nums[left], nums[right], nums[i])
 			print(nums[left] * nums[right] * nums[i])
 			break
 		if (total < target):

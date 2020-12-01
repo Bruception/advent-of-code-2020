@@ -1,11 +1,9 @@
 file = open('input.txt', 'r')
 map = {}
-
 for line in file:
 	num = int(line)
 	if (num in map):
 		print(num * map[num])
-		break;
+		break
 	key = 2020 - num
 	map[key] = num
-
