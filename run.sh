@@ -1,9 +1,9 @@
-printf '~~~ ADVENT OF CODE 2020 SOLUTIONS ~~~\n'
-printf '             .-"```"-.\n'
-printf '            /_\ _ _ __\\\n'
-printf '           | /{` ` `  `}\n'
-printf '           {} {_,_,_,_,}\n'
-printf '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
+printf '~~~ ADVENT OF CODE 2020 ANSWERS ~~~\n'
+printf '            .-"```"-.\n'
+printf '           /_\ _ _ __\\\n'
+printf '          | /{` ` `  `}\n'
+printf '          {} {_,_,_,_,}\n'
+printf '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
 
 dayNumber=1
 for day in `ls -d */ | egrep '^day[0-9]+'`
