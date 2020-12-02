@@ -14,7 +14,7 @@ do
     do
         answer=`python3 $day$script 2>/dev/null || printf "Oops! No answer yet :("`
         printf "\\tAnswer for part $part: $answer\n"
-        part=$(( part + 1 ))
+        part=$(( $part + 1 ))
     done
-    dayNumber=$(( dayNumber + 1 ))
+    dayNumber=$(( $dayNumber + 1 ))
 done
