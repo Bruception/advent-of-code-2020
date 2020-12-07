@@ -15,7 +15,7 @@ total = 0
 file = open(f'{sys.path[0]}/input.txt', 'r')
 for line in file:
     if (line != '\n'):
-        group.append(line[:-1])
+        group.append(line[:-1] if line[-1] == '\n' else line)
     else:
         total += getConsensus(group)
         group.clear()

@@ -49,7 +49,7 @@ passport = Passport()
 file = open(f'{sys.path[0]}/input.txt', 'r')
 for line in file:
     if (line != '\n'):
-        passport.addField(line[0:-1])
+        passport.addField(line[0:-1] if line[-1] == '\n' else line)
         continue
     passports.append(passport)
     passport = Passport()
