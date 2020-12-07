@@ -1,3 +1,4 @@
-next_day=`ls -d */ | egrep '^day[0-9]+/$' | wc -l`
-dir=day$(( $next_day + 1 ))
-mkdir $dir ; touch $dir/input.txt $dir/part1.py $dir/part2.py
+next_day=$(( `ls -d */ | egrep '^day[0-9]+/$' | wc -l` + 1 ))
+dir=day$next_day
+mkdir $dir ; $dir/part1.py $dir/part2.py
+bash ./get_input.sh $next_day
