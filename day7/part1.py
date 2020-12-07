@@ -6,7 +6,7 @@ def clean(bag):
     return cleaned[:-1] if cleaned[-1] == 's' else cleaned
 
 file = open(f'{sys.path[0]}/input.txt', 'r')
-fullBag = re.compile(r'^([a-z\s]+) bags contain ((\s?[0-9]+ [a-z\s]+ bags?,?)+)+\.$')
+fullBag = re.compile(r'^([a-z\s]+) bags contain ((\s?[0-9]+ [a-z\s]+ bags?,?)+)\.$')
 bags = {}
 for line in file:
     matchesFullBag = fullBag.match(line)
