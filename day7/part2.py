@@ -2,8 +2,9 @@ import re
 import sys
 
 def createTuple(bag):
+    bag = bag.lstrip()
     amount = int(re.match('([0-9]+)', bag).group(1))
-    cleaned = re.sub(r'[0-9]+ ', '', bag.lstrip()).replace(' bag', '')
+    cleaned = re.sub(r'[0-9]+ ', '', bag).replace(' bag', '')
     cleaned = cleaned[:-1] if cleaned[-1] == 's' else cleaned
     return (amount, cleaned)
 
@@ -14,8 +15,7 @@ for line in file:
     matchesFullBag = fullBag.match(line)
     if (matchesFullBag):
         matchedGroups = matchesFullBag.groups()
-        containedBags = [bag.lstrip() for bag in matchedGroups[1].split(',')]
-        containedBags = list(map(createTuple, containedBags))
+        containedBags = [createTuple(bag) for bag in matchedGroups[1].split(',')]
         containingBag = matchedGroups[0]
         bags[containingBag] = containedBags
 

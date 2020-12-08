@@ -2,6 +2,7 @@ import re
 import sys
 
 def clean(bag):
+    bag = re.sub(r'[0-9]+ ', '', bag.lstrip())
     cleaned = bag.replace(' bag', '')
     return cleaned[:-1] if cleaned[-1] == 's' else cleaned
 
@@ -12,8 +13,7 @@ for line in file:
     matchesFullBag = fullBag.match(line)
     if (matchesFullBag):
         matchedGroups = matchesFullBag.groups()
-        containedBags = [re.sub(r'[0-9]+ ', '', bag.lstrip()) for bag in matchedGroups[1].split(',')]
-        containedBags = list(map(clean, containedBags))
+        containedBags = [clean(bag) for bag in matchedGroups[1].split(',')]
         containingBag = matchedGroups[0]
         bags[containingBag] = containedBags
 
