@@ -35,5 +35,3 @@ for bag in bags:
         numBagsHoldGold += 1
 
 print(numBagsHoldGold)
-
-
