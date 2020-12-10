@@ -6,12 +6,13 @@ if ! [[ -z "$1" ]] && [[ $1 =~ $pattern ]]
 then
     iterator=$1
 else
-    iterator=`ls -d */ | egrep -oh '[0-9]+'`
+    iterator=`ls -d */ | egrep -oh '[0-9]+' | sed -e 's/^0//g'`
 fi
 
 for day in $iterator
 do
-    mkdir -p day$day
+    dirNum=`printf "%02d" $day`
+    mkdir -p day$dirNum
     printf "Getting input for day $day...\n"
-    printf '%s' "`curl -H "cookie: $cookies" https://adventofcode.com/2020/day/$day/input`" > day$day/input.txt
+    printf '%s' "`curl -H "cookie: $cookies" https://adventofcode.com/2020/day/$day/input`" > day$dirNum/input.txt
 done
