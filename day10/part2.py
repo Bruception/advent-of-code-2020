@@ -13,7 +13,7 @@ def permute(i, nums, memo = {}):
     for j in range(i + 1, len(nums)):
         if (nums[j] - nums[i] > 3):
             break
-        answer = permute(j, nums)
+        answer = permute(j, nums, memo)
         numWays += answer
         memo[j] = answer
     return numWays
