@@ -8,7 +8,6 @@ rows = len(seats)
 cols = len(seats[0])
 
 def countOccupied(i, j, seats):
-    global rows, cols
     occupied = 0
     for x, y in directions:
         tx = i + x
@@ -21,17 +20,14 @@ def step(seats):
     seatsCopy = copy.deepcopy(seats)
     for i in range(rows):
         for j in range(cols):
-            if (seats[i][j] == 'L'):
-                if (countOccupied(i, j, seats) == 0):
-                    seatsCopy[i][j] = '#'
-            elif (seats[i][j] == '#'):
-                if (countOccupied(i, j, seats) >= 4):
-                    seatsCopy[i][j] = 'L'
+            if (seats[i][j] == 'L' and countOccupied(i, j, seats) == 0):
+                seatsCopy[i][j] = '#'
+            elif (seats[i][j] == '#' and countOccupied(i, j, seats) >= 4):
+                seatsCopy[i][j] = 'L'
     return seatsCopy
 
 stepped = None
 while (stepped != seats):
     stepped = seats
     seats = step(seats)
-
 print(sum(row.count('#') for row in seats))
