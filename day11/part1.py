@@ -1,13 +1,12 @@
 import sys
-import copy
 
 file = open(f'{sys.path[0]}/input.txt', 'r')
 seats = [list(line[:-1] if line[-1] == '\n' else line) for line in file]
-directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+directions = ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1))
 rows = len(seats)
 cols = len(seats[0])
 
-def countOccupied(i, j, seats):
+def countOccupied(i, j):
     occupied = 0
     for x, y in directions:
         tx = i + x
@@ -17,12 +16,15 @@ def countOccupied(i, j, seats):
     return occupied
 
 def step(seats):
-    seatsCopy = copy.deepcopy(seats)
+    seatsCopy = list(map(list, seats))
     for i in range(rows):
         for j in range(cols):
-            if (seats[i][j] == 'L' and countOccupied(i, j, seats) == 0):
+            seat = seats[i][j]
+            if (seat == '.'): continue
+            occupied = countOccupied(i, j)
+            if (seat == 'L' and occupied == 0):
                 seatsCopy[i][j] = '#'
-            elif (seats[i][j] == '#' and countOccupied(i, j, seats) >= 4):
+            elif (seat == '#' and occupied >= 4):
                 seatsCopy[i][j] = 'L'
     return seatsCopy
 
