@@ -13,7 +13,7 @@ def countOccupied(i, j, seats):
         tx = i + x
         ty = j + y
         if (tx >= 0 and tx < rows and ty >= 0 and ty < cols):
-            occupied = occupied + 1 if seats[tx][ty] == '#' else occupied
+            occupied += 1 if seats[tx][ty] == '#' else 0
     return occupied
 
 def step(seats):

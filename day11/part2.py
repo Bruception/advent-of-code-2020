@@ -13,7 +13,7 @@ def countOccupied(i, j, seats):
         tx, ty = i + x, j + y
         while (tx >= 0 and tx < rows and ty >= 0 and ty < cols):
             if (seats[tx][ty] != '.'):
-                occupied = occupied + 1 if seats[tx][ty] == '#' else occupied
+                occupied += 1 if seats[tx][ty] == '#' else 0
                 break
             tx += x
             ty += y
