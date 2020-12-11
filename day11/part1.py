@@ -1,0 +1,37 @@
+import sys
+import copy
+
+file = open(f'{sys.path[0]}/input.txt', 'r')
+seats = [list(line[:-1] if line[-1] == '\n' else line) for line in file]
+directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+rows = len(seats)
+cols = len(seats[0])
+
+def countOccupied(i, j, seats):
+    global rows, cols
+    occupied = 0
+    for x, y in directions:
+        tx = i + x
+        ty = j + y
+        if (tx >= 0 and tx < rows and ty >= 0 and ty < cols):
+            occupied = occupied + 1 if seats[tx][ty] == '#' else occupied
+    return occupied
+
+def step(seats):
+    seatsCopy = copy.deepcopy(seats)
+    for i in range(rows):
+        for j in range(cols):
+            if (seats[i][j] == 'L'):
+                if (countOccupied(i, j, seats) == 0):
+                    seatsCopy[i][j] = '#'
+            elif (seats[i][j] == '#'):
+                if (countOccupied(i, j, seats) >= 4):
+                    seatsCopy[i][j] = 'L'
+    return seatsCopy
+
+stepped = None
+while (stepped != seats):
+    stepped = seats
+    seats = step(seats)
+
+print(sum(row.count('#') for row in seats))
