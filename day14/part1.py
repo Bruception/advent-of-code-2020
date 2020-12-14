@@ -18,7 +18,7 @@ for line in file:
     if (isMem):
         address, value = isMem.groups()
         value = list(bin(int(value))[2:].rjust(36, '0'))
-        memory[address] = applyMask(mask, value)
+        memory[address] = int(''.join(applyMask(mask, value)), 2)
     else:
         mask = list(line[-36:])
-print(sum(int(''.join(memory[address]), 2) for address in memory))
+print(sum(memory.values()))

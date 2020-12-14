@@ -32,4 +32,4 @@ for line in file:
         for a in addresses: memory[a] = value
     else:
         mask = list(line[-36:])
-print(sum(memory[address] for address in memory))
+print(sum(memory.values()))
