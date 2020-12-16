@@ -58,30 +58,26 @@ def parseNearbyTickets(file):
         line = file.readline()
     return tickets
 
-def getFieldMapping(tickets):
+def getField(tickets):
     field = None
-    location = 0
     for i in range(len(tickets[0].mappings)):
         intersection = set(tickets[0].mappings[i])
         for ticket in tickets:
             intersection &= ticket.mappings[i]
         if (len(intersection) == 1):
             field = intersection.pop()
-            location = i
             break
     return (field, i)
 
 def determineOrdering(tickets, fields):
     fieldMappings = {field['label']: 0 for field in fields}
-    i = 0
-    while(i < len(fields)):
-        field, order = getFieldMapping(tickets)
+    for i in range(len(fields)):
+        field, order = getField(tickets)
         fieldMappings[field] = order
         for ticket in tickets:
             for mapping in ticket.mappings:
                 if (field in mapping):
                     mapping.remove(field)
-        i += 1
     return fieldMappings
 
 def parse(file):
