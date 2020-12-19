@@ -35,8 +35,6 @@ for line in file:
 rules[8] = [[42], [42, 8]]
 rules[11] = [[42, 31], [42, 11, 31]]
 
-previousRule = {}
-
 def buildRegex(currentRule, buffer, maxdepth, depth = 0):
     if (depth >= maxdepth):
         return
@@ -46,7 +44,6 @@ def buildRegex(currentRule, buffer, maxdepth, depth = 0):
         for rule in subrules:
             if (rule == 'a' or rule == 'b'):
                 buffer.append(rule)
-                previousRule[currentRule] = rule
                 return
             buffer.append('(')
             buildRegex(rule, buffer, maxdepth, depth + 1)
