@@ -33,13 +33,12 @@ for line in file:
         messages.append(line.strip('\n'))
 
 def buildRegex(currentRule, buffer):
+    if (currentRule == 'a' or currentRule == 'b'):
+        buffer.append(currentRule)
+        return
     r = rules[currentRule]
     for i, subrules in enumerate(r):
-        first = False
         for rule in subrules:
-            if (rule == 'a' or rule == 'b'):
-                buffer.append(rule)
-                return
             buffer.append('(')
             buildRegex(rule, buffer)
             buffer.append(')')

@@ -38,13 +38,12 @@ rules[11] = [[42, 31], [42, 11, 31]]
 def buildRegex(currentRule, buffer, maxdepth, depth = 0):
     if (depth >= maxdepth):
         return
+    if (currentRule == 'a' or currentRule == 'b'):
+        buffer.append(currentRule)
+        return
     r = rules[currentRule]
     for i, subrules in enumerate(r):
-        first = False
         for rule in subrules:
-            if (rule == 'a' or rule == 'b'):
-                buffer.append(rule)
-                return
             buffer.append('(')
             buildRegex(rule, buffer, maxdepth, depth + 1)
             buffer.append(')')
