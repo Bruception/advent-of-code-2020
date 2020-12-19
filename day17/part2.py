@@ -32,7 +32,7 @@ def step(space, curr, dim, spaceCopy, coord):
             step(space, curr + 1, dim - 1, spaceCopy, coord)
         else:
             c = tuple(coord)
-            active = countActive(space, coord)
+            active = countActive(space, c)
             if (c in space and (active == 2 or active == 3)):
                 spaceCopy.add(c)
             elif (c not in space and active == 3):
