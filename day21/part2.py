@@ -48,4 +48,3 @@ def determineOrdering(ingredientMapping):
 
 mapping = determineOrdering(ingredientMapping)
 print(','.join([mapping[allergen] for allergen in sorted(mapping)]))
-
