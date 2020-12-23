@@ -22,11 +22,10 @@ class HashedCircularList:
         current.next = self.head.next
         self.head = self.head.next
 
-    def getNextThree(self, value):
-        currentNode = self.nodeMap[value]
-        nextNode = currentNode.next.next.next.next
-        threeCups = currentNode.next
-        currentNode.next = nextNode
+    def getNextThree(self, node):
+        nextNode = node.next.next.next.next
+        threeCups = node.next
+        node.next = nextNode
         return threeCups
 
     def addThreeAt(self, value, threeCups):
@@ -39,7 +38,7 @@ nums = [int(num) for num in list(open(f'{sys.path[0]}/input.txt', 'r').readline(
 nums.extend(list(range(max(nums) + 1, 1000001)))
 
 def playRound(hcl, current):
-    nextThree = hcl.getNextThree(current.value)
+    nextThree = hcl.getNextThree(current)
     first, second, third = nextThree.value, nextThree.next.value, nextThree.next.next.value
     destValue = current.value - 1
     while (destValue == first or destValue == second or destValue == third or destValue == 0):
